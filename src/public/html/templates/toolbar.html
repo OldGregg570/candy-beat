@@ -1,0 +1,38 @@
+<!-- Toolbar -->
+<div class="main-toolbar">
+  <div class="add-track" dropdown>
+    <button class="btn-add-track" dropdown-toggle>
+     <span class="glyphicon glyphicon-plus"></span> &nbsp <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu add-track-menu">
+      <li ng-click="addTrack('synthesizer')"><span class="icon-synth"></span>Synthesizer</li>
+      <li ng-click="addTrack('sampler')"><span class="icon-sampler"></span>Sampler</li>
+    </ul>
+  </div>
+
+  <button ng-click="toggleRandomizer()" class="btn btn-default">
+    <span ng-class="{ false : 'icon-large icon-playing-dices',  true : 'icon-large icon-playing-dices-active'}[randomizing]"></span>
+  </button>
+
+  <rzslider class="toolbar-slider" rz-slider-model="masterVolume" rz-slider-options="volumeSlider"></rzslider>
+
+  <button type="button" class="btn btn-default">
+    <span ng-if="masterVolume === 0" class="glyphicon glyphicon-volume-off"></span>
+    <span ng-if="60 > masterVolume && masterVolume > 0" class="glyphicon glyphicon-volume-down"></span>
+    <span ng-if="60 <= masterVolume" class="glyphicon glyphicon-volume-up"></span>
+  </button>
+
+  <select ng-model="key" class="toolbar-select" ng-options="key.name for key in keys"
+          value="{{ key.val }}" ng-change="updateScale()">
+    {{ key.name }}
+  </select>
+
+  <select ng-model="scale" class="toolbar-select" ng-options="scale.name for scale in scales"
+          value="{{ scale.notes }}" ng-change="updateScale()">
+    {{ scale.name }}
+ </select>
+
+ <button type="button" class="btn btn-default"><span class="icon-large icon-metronome"></span></button>
+ <rzslider class="toolbar-slider" rz-slider-model="tempo" rz-slider-options="tempoSlider"></rzslider>
+ <span ng-style="{ 'padding-left' : tempo >= 100 ? '3px' : '10px' }">{{ tempo }}</span> bpm
+</div>

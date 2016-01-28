@@ -1,0 +1,19 @@
+<span class="span-sampler" ng-if="synth.oscs[0].type === 'sampler'">
+ <form sample="synth.oscs[0].sample"
+       onsuccess="sampleUploaded"
+       name="file"
+       class="dropzone"
+       method="post"
+       action="/sample"
+       enctype="multipart/form-data"
+       dropzone="dropzone" ng-dropzone>
+
+   <input name="file" type="file" action="/sample" multiple />
+   <ng-wavesurfer url="{{ synth.oscs[0].sample.name }}"
+                  wave-color="#ad9ddd"
+                  progress-color="#ad9ddd"
+                  height="280"
+                  cursor-width="0"
+                  normalize="true"></ng-wavesurfer>
+ </form>
+</span>

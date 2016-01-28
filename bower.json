@@ -1,0 +1,23 @@
+{
+  "name": "candy-beat",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "~1.10.2",
+    "angular": "~1.4.8",
+    "bootstrap": "~3.3.6",
+    "spin.js": "spinjs#~2.3.2",
+    "jquery-knob": "~1.2.13",
+    "angular-bootstrap": "~0.14.3",
+    "angular-knob": "~0.0.2",
+    "less": "2.5.1",
+    "angular-spinner": "~0.8.0",
+    "angularjs-slider": "~2.3.0",
+    "wavesurfer.js": "~1.0.50",
+    "ngclipboard": "~1.1.0",
+    "angular-bootstrap-toggle-switch": "~0.5.6"
+  },
+  "private": true,
+  "resolutions": {
+    "jquery": ">=1.7.0"
+  }
+}

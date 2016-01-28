@@ -1,0 +1,43 @@
+{
+	"gain": 80,
+	"type": "synth",
+	"lfo": {
+		"level": 19,
+		"frequency": 2.1375948754139245,
+		"destination": "osc-2.frequency"
+	},
+	"filter": {
+		"cutoff": 9930,
+		"type": "lowpass"
+	},
+	"envelope": {
+		"attack": 5,
+		"release": 294,
+		"sustain": 6
+	},
+	"oscs": [
+		{
+			"octave": 4,
+			"type": "sawtooth",
+			"harmony": 0,
+			"detune": 1,
+			"volume": 50
+		},
+		{
+			"octave": 6,
+			"type": "triangle",
+			"harmony": 0,
+			"detune": 8,
+			"volume": 16
+		},
+		{
+			"octave": 6,
+			"type": "sine",
+			"harmony": -4,
+			"detune": 29,
+			"volume": 2
+		}
+	],
+	"name": "Rubber Whistle",
+	"_id": "611180415842682123"
+}

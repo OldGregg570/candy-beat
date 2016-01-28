@@ -1,0 +1,15 @@
+<table class="table">
+  <tr>
+   <td>Test</td>
+   <td>
+    <input type="number"
+           name="input"
+           ng-model="track.randomizer.toggleChance"
+           min="0"
+           max="1.0"
+           step="0.01" required>
+   </td>
+   <td>For each generation, each cell has a {{ ratioToPercent(track.randomizer.toggleChance) }}% chance to toggle.</td>
+  </tr>
+
+</table>

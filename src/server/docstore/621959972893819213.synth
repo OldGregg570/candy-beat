@@ -1,0 +1,43 @@
+{
+	"gain": 343,
+	"type": "synth",
+	"lfo": {
+		"level": -2,
+		"frequency": 2.8242034680882746,
+		"destination": "filter.cutoff"
+	},
+	"filter": {
+		"cutoff": 1374,
+		"type": "lowpass"
+	},
+	"envelope": {
+		"attack": 5,
+		"release": 143,
+		"sustain": 6
+	},
+	"oscs": [
+		{
+			"octave": 3,
+			"type": "square",
+			"harmony": 0,
+			"detune": -1,
+			"volume": 57
+		},
+		{
+			"octave": 5,
+			"type": "sawtooth",
+			"harmony": 0,
+			"detune": 2,
+			"volume": 2
+		},
+		{
+			"octave": 7,
+			"type": "sawtooth",
+			"harmony": -2,
+			"detune": -23,
+			"volume": 2
+		}
+	],
+	"name": "Square Pluck",
+	"_id": "621959972893819213"
+}

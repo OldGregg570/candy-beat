@@ -1,0 +1,36 @@
+<div class="candy-beat-container">
+
+<mainmenu></mainmenu>
+<!-- <canvas id="canvas" class="mini-analyser-canvas" ng-click="openAnalyser()"></canvas> -->
+
+<toolbar></toolbar>
+
+ <div class="container-tracks">
+   <div class="candy-track"
+        ng-repeat="track in tracks"
+        ng-init="parentIndex = $index">
+
+     <trackcontrols></trackcontrols>
+
+     <div class="candy-beat-grid">
+
+       <span ng-repeat="col in track.columns"
+             ng-init="parentIndex = $index"
+             style="float: left"
+             ng-class="activeColumn === $index ? 'column-active' : ''">
+
+         <div ng-repeat="cell in col"
+               ng-click="toggleCell(track, $index, $parent.$index)"
+               ng-class="cellClass (track, $index, $parent.$index);">
+         </div>
+       </span>
+
+     </div>
+
+     <div style="clear: both;"></div>
+   </div>
+
+ </div>
+
+ <mixer></mixer>
+</div>

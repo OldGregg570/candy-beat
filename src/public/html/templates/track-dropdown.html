@@ -1,0 +1,29 @@
+<div class="track-controls">
+  <div class="btn-group" dropdown>
+   <button class="track-settings-icon" dropdown-toggle></button>
+
+   <ul class="dropdown-menu">
+     <li ng-click="openTrackSettings(track);"><a href="#">
+       <span class="icon-small icon-piano"></span>
+       Synth Settings
+     </a></li>
+
+     <li ng-click="track.locked = true;" ng-if="track.locked == false"><a href="#">
+       <span class="icon-small icon-unlock"></span>
+       Lock
+     </a></li>
+     <li ng-click="track.locked = false;" ng-if="track.locked == true"><a href="#">
+       <span class="icon-small icon-lock"></span>
+       Unlock
+     </a></li>
+
+     <li role="separator" class="divider"></li>
+
+     <li ng-click="tracks.splice($index, 1);"><a href="#">
+       <span class="glyphicon glyphicon-trash text-danger"></span>
+       &nbsp Delete
+     </a></li>
+   </ul>
+ </div>
+ </br>
+</div>

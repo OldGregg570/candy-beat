@@ -1,0 +1,9 @@
+<div class="analyser-modal">
+ <canvas id="canvas" class="analyser-canvas"></canvas></br>
+ <span class="analyser-frequency-labels"
+       ng-repeat="k in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]"
+       ng-style="{ 'left' :  calcLabelOffset(k) + 'px' }"> {{ 1500 * k }} </span>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="cancel()">OK</button>
+</div>

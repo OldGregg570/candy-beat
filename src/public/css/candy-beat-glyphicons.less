@@ -1,0 +1,59 @@
+@import "http://localhost/bootstrap/less/bootstrap.less";
+
+
+.icon {
+ background-repeat: no-repeat;
+ display: inline-block;
+ vertical-align: text-bottom;
+}
+
+.icon-large {
+    .icon;
+    background-image: url("./img/glyphicons_new.png");
+    height: 28px;
+    line-height: 28px;
+    width: 28px;
+}
+
+.icon-small {
+  .icon;
+  background-image: url("./img/glyphicons_new.png");
+  height: 18px;
+  line-height: 18px;
+  width: 18px;
+}
+
+.icon-waveform {
+ .icon;
+ background-image: url("./img/waveforms.png");
+ background-size: 30 30px;
+ height: 90px;
+ line-height: 90px;
+ width: 90px;
+ position: absolute;
+ left: 144px;
+ transform: scale(0.3, 0.3) translate(0, -20px);
+}
+
+.icon-waveform.icon-sine {background-position: -1 -1; }
+.icon-waveform.icon-square {background-position: -92 -1; }
+.icon-waveform.icon-triangle {background-position: -1 -92; }
+.icon-waveform.icon-sawtooth {background-position: -92 -92; }
+.icon-waveform.icon-noise {background-position: -92 -185; }
+
+.icon-piano{ .icon-large; background-position: -230px -707px; transform: scale(0.75, 0.75); }
+.icon-playing-dices{ .icon-large; background-position: -230px -510px;  }
+.icon-playing-dices-active{ .icon-large; background-position: -230px -481px;  }
+.icon-lock{ .icon-large; background-position: -138px -705px;  transform: scale(0.6, 0.6); }
+.icon-unlock{ .icon-large; background-position: -138px -741px;  transform: scale(0.6, 0.6); }
+.icon-metronome{ .icon-large; background-position: 0 -670px;  }
+.icon-synth {.icon-large; background-position: 0 -390px }
+.icon-sampler {.glyphicon; .glyphicon-th; }
+
+.icon-whole{ .icon-large; background-position: 0 -422px;  }
+.icon-half{ .icon-large; background-position: 0 -457px;  }
+.icon-quarter{ .icon-large; background-position: 0 -494px;  }
+.icon-eighth{ .icon-large; background-position: 0 -528px;  }
+.icon-sixteenth{ .icon-large; background-position: 0 -566px;  }
+.icon-thirty-second{ .icon-large; background-position: 0 -601px;  }
+.icon-sixty-fourth{ .icon-large; background-position: 0 -636px;  }

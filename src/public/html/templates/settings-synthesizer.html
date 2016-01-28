@@ -1,0 +1,109 @@
+<div class="synth-settings"
+      ng-repeat="synth in track.synthesizers"
+      ng-if="$index === currentSynth">
+ <span>
+
+<div class="modal-header"
+     ng-if="track.synthesizers[0].type === 'sampler'">
+ <ul class="synth-pagination">
+   <li ng-repeat="s in track.synthesizers" ng-class="currentSynth === $index ? 'active' : ''">
+    <a href="#" ng-click="setPage($index)">
+     {{ s.oscs[0].sample.name | sampleName }}
+    </a></li>
+ </ul>
+</div>
+
+<div class="modal-body">
+ <settingsoscs></settingsoscs>
+ <settingssampler></settingssampler>
+
+ <span class="span-envelope">
+  <h3>ASR Envelope</h3>
+
+  <canvas class="env-canvas" ng-class="'env-canvas' + $index"></canvas></br>
+ </br>
+  <input knob class="synth-knob" oscindex="$index" knobType="attack" value="synth.envelope.attack">
+  <input knob class="synth-knob" oscindex="$index" knobType="sustain" value="synth.envelope.sustain">
+  <input knob class="synth-knob" oscindex="$index" knobType="release" value="synth.envelope.release">
+ </span>
+
+ </span>
+
+
+ <span class="clearfix"></span>
+
+ <span class="span-effects">
+   <table>
+    <tr> <td class="border-right"> <h3>Filter</h3> </td>
+         <td class="padding-left"> <h3>LFO</h3> </td>
+         <td></td><td> <h3 class="padding-left">Master Gain</h3> </td>
+    </tr>
+
+    <tr>
+     <td class="border-right">
+      <input knob class="synth-knob" oscindex="null" knobType="cutoff" value="synth.filter.cutoff">
+     </td>
+     <td class="padding-left">
+      <input knob class="synth-knob" oscindex="null" knobType="lfo-gain" value="synth.lfo.level">
+      <h5 class="knob-lfo-level">&nbsp &nbsp Level</h5>
+     </td>
+     <td class="border-right">
+      <input knob class="synth-knob" oscindex="null" knobType="lfo-frequency" value="synth.lfo.frequency">
+      <h5 class="knob-lfo-frequency">&nbsp Frequency</h5>
+     </td>
+     <td class="padding-left">
+      <input knob class="synth-knob" oscindex="null" knobType="master-gain" value="synth.gain">
+     </td>
+    </tr>
+
+
+    <tr><td class="border-right">
+     <select class="filter-select" ng-model="synth.filter.type">
+      <option value="lowpass">Lowpass</option>
+      <option value="highpass">Highpass</option>
+      <option value="bandpass">Bandpass</option>
+      <option value="notch">Notch</option>
+     </select>
+    </td>
+    <td class="padding-left" colspan="2" >
+     <select class="lfo-select" ng-model="synth.lfo.destination" ng-options="dest for dest in lfoDestinations">
+      {{ dest }}
+     </select>
+    </td>
+    <td>
+    </td>
+    </tr>
+   </table>
+ </span>
+</div>
+
+<div class="modal-footer">
+ <span>
+  <!-- <span class="add-synthesizer" ng-click="addSynthesizer()"></span>
+  <span class="remove-synthesizer" ng-click="removeSynthesizer()"></span> -->
+
+ <select class="sound-select"
+         ng-show="track.synthesizers[0].type === 'synth'"
+         ng-model="selectedPatch"
+         ng-change="loadSynth(selectedPatch._id)"
+         ng-options="patch as patch.name for patch in patches">
+   {{ patch.name }}
+ </select>
+
+ <select class="sound-select"
+         ng-show="track.synthesizers[0].type === 'sampler'"
+         ng-model="selectedSample"
+         ng-change="loadSample(selectedSample)"
+         ng-options="sample for sample in samples">
+   {{ sample.name }}
+ </select>
+
+
+ <button class="btn-save" ng-click="saveSynth()"></button>
+ <button class="btn-shuffle" ng-click="randomize(synth)"></button>
+
+</span>
+    <button class="btn btn-default" ng-click="cancel()">OK</button>
+</div>
+
+</div>

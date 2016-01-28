@@ -1,0 +1,23 @@
+<div class="block floating-log">
+    <alert id="user-logs"
+           style="float:right;"
+           ng-repeat="log in logger.userLogs"
+           type="{{ log.type }}"
+           close="logger.removeLog($index)"
+           ng-click="logAction(log)"
+           ng-style="{ 'width' : (320 + 4 * (logger.userLogs.length - $index))}">
+
+        <span class="log-icon">
+            <span class="glyphicon" ng-class="log.icon"></span>
+        </span>
+        <span class="log-message">
+            <b style="font-weight:bold;">{{ log.msg }}</b>
+            <span class="pull-right" style="color:#ccc;"> {{ log.count > 1 ? '(x' + log.count + ')' : '' }}</span>
+
+            <div>
+                <span style="margin-left:20px;" class="log-details">{{ log.details }}</span>
+            </div>
+        </span>
+    </alert>
+
+</div>

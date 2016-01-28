@@ -1,0 +1,29 @@
+<uib-tabset style="top: -100px;">
+ <uib-tab>
+  <uib-tab-heading>
+  {{ track.synthesizers[0].type === 'sampler' ? 'Sampler' : 'Synthesizer' }} Settings
+ </uib-tab-heading>
+  <settingssynth></settingssynth>
+ </uib-tab>
+
+
+ <uib-tab>
+  <uib-tab-heading>
+  Track Settings
+ </uib-tab-heading>
+ <div class="track-settings">
+   <h3> Track {{ track.index + 1 }} </h3>
+   <h4> Resolution: {{ track.resolution }} </h4>
+   <input type="number" class="resolution-spinner" name="input" ng-model="track.resolution" min="0" max="6" required>
+  </div>
+
+  </uib-tab>
+
+  <uib-tab>
+   <uib-tab-heading>
+   Randomizer Settings
+  </uib-tab-heading>
+   <randomizersettings></randomizersettings>
+ </uib-tab>
+
+</uib-tabset>

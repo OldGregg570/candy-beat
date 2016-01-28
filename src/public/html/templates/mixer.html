@@ -1,0 +1,17 @@
+<div class="mixer-panel">
+ <span ng-repeat="track in tracks" class="mixer-track">
+  <h4>&nbsp&nbspTrack {{ $index + 1 }}</h4>
+
+  <div class="btn-group" style="left: 4px; padding-bottom: 10px;">
+  <button type="button" class="btn" ng-class="track.mute ? 'btn-info' : 'btn-default'" ng-model="track.mute" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+   <b>M</b>
+ </button>
+  <button type="button" class="btn" ng-class="track.solo ? 'btn-info' : 'btn-default'" ng-model="track.solo" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+   <b>S</b>
+  </button>
+  </div></br>
+  <input knob class="synth-knob" oscindex="null" knobType="track-gain" value="track.gain"></br>
+
+
+ </span>
+</div>

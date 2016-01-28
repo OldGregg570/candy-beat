@@ -1,0 +1,16 @@
+<span class ="span-oscs" ng-if="synth.oscs[0].type !== 'sampler'">
+ <table>
+  <tr class="osc-knob-labels"><td>Range </td> <td>Wave</td> <td>Harmony</td> <td>Detune</td> <td>Volume</td></tr>
+   <tr ng-repeat="osc in synth.oscs track by $index">
+    <td><input knob class="synth-knob" oscindex="$index" knobType="octave" value="osc.octave"></td>
+    <td>
+     <i class="icon-waveform icon-sine" ng-class="'icon-' + osc.type"></i>
+     <input knob class="synth-knob" oscindex="$index" knobType="type" value="osc.type">
+    </td>
+    <td><input knob class="synth-knob" oscindex="$index" knobType="harmony" value="osc.harmony"></td>
+    <td><input knob class="synth-knob" oscindex="$index" knobType="detune" value="osc.detune"></td>
+    <td><input knob class="synth-knob" oscindex="$index" knobType="volume" value="osc.volume"></td>
+   </tr>
+ </table>
+
+</span>

@@ -1,0 +1,56 @@
+ <head>
+    <meta charset="UTF-8">
+    <title>Candy Beat</title>
+
+    <!-- Bower Components  -->
+    <script src="../../../angular/angular.js"></script>
+    <script src="../../../angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="../../../angularjs-slider/dist/rzslider.js"></script>
+    <script src="../../../angular-spinner/angular-spinner.js"></script>
+    <script src="../../../jquery/dist/jquery.min.js"></script>
+    <script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../../jquery-knob/dist/jquery.knob.min.js"></script>
+    <script src="../../../dropzone/downloads/dropzone.min.js"></script>
+    <script src="../../../angular-dropzone/lib/angular-dropzone.js"></script>
+    <script src="../../../dropzone/downloads/css/dropzone.css"></script>
+    <script src="../../../dropzone/downloads/css/basic.css"></script>
+    <script src="../../../wavesurfer.js/dist/wavesurfer.min.js"></script>
+    <script src="../../../clipboard/dist/clipboard.min.js"></script>
+    <script src="../../../ngclipboard/dist/ngclipboard.min.js"></script>
+
+    <!-- <script src-"../../../less/dist/less.min.js"></script> -->
+    <script src="../../../spin.js/spin.min.js"></script>
+
+    <link href="../../../angularjs-slider/dist/rzslider.css" rel="stylesheet/less">
+    <link href="../../../bootstrap/less/bootstrap.less" rel="stylesheet/less">
+
+    <!-- Local Stylesheets -->
+    <link rel="stylesheet/less" href="./css/candy-beat-glyphicons.less">
+    <link rel="stylesheet/less" href="./css/main.less">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
+
+    <script src="./js/main.js"></script>
+    <script src="./js/services/logger.js"></script>
+
+    <script src="./js/songs.js"></script>
+    <script src="./js/track-settings.js"></script>
+
+    <script src="./js/services/random-service.js"></script>
+    <script src="./js/services/music-service.js"></script>
+    <script src="./js/services/namer-service.js"></script>
+    <!-- <script src="./js/services/pitch-shift.js"></script> -->
+    <script src="./js/services/patch-service.js"></script>
+    <script src="./js/services/randomizer-service.js"></script>
+    <script src="./js/services/synth-service.js"></script>
+    <script src="./js/services/Track.js"></script>
+
+    <script src="./js/directives/synth-knob.js"></script>
+    <script src="./js/directives/wavesurfer.js"></script>
+    <script src="./js/directives/dropzone.js"></script>
+    <script src="./js/directives/user-logs.js"></script>
+  </head>
+  <body ng-app="CandyBeatApp">
+      <userlog></userlog>
+      <candymain></candymain>
+  </body>

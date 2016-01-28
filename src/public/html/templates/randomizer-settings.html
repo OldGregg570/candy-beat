@@ -1,0 +1,68 @@
+<div class="randomizer-settings">
+
+
+ <h4>
+  Strategy
+  <select ng-model="track.randomizer.strategy"
+          ng-options="strategy for strategy in randomizerService.strategies">
+  </select>
+ </h4>
+
+
+<!-- Two column tables  -->
+<table class="table">
+   <tr>
+    <td>Rhythm Filter</td>
+    <td>
+     <div class="btn-group-rhyth,">
+         <span ng-repeat="k in track.randomizer.rhythmFilter track by $index" ng-if="$index % powerOfTwo(track.resolution) == 0">
+          <label ng-style="{ 'width' : (powerOfTwo(track.resolution) * 10) - (track.resolution * 2) - 4}"
+                 class="btn-rhythm"
+                 ng-model="track.randomizer.rhythmFilter[$index]"
+                 uib-btn-checkbox>
+         </label>
+         </span>
+     </div>
+    </td>
+  </tr>
+  </table>
+
+<!-- Three column tables  -->
+ <table class="table">
+  <tr>
+   <td>Repeat</td>
+   <td>
+    <input type="number"
+           name="input"
+           ng-model="track.randomizer.repeat"
+           min="0"
+           max="16"
+           step="1" required>
+   </td>
+   <td>A new phrase will be generated every {{ track.randomizer.repeat }} bars.</td>
+  </tr>
+  <tr>
+   <td>Persistence</td>
+   <td>
+    <button type="button"
+            class="btn-splatter-persistence"
+            ng-model="track.randomizer.clear"
+            uib-btn-checkbox>
+            <b>{{ track.randomizer.clear ? 'Clear' : 'Compound' }}</b>
+    </button>
+ </td>
+ <td>
+  <span uib-tooltip-html="tooltips.randomizer_splatter_persistence">
+    <span ng-show="track.randomizer.clear">Turn off all cells in this track before randomizing.</span>
+    <span ng-show="!track.randomizer.clear">Keep randomizing without turning off active cells.</span>
+  </span>
+ </td>
+</tr>
+ </table>
+
+<randomsplatter ng-show="track.randomizer.strategy === 'splatter'"></randomsplatter>
+<randomphrase   ng-show="track.randomizer.strategy === 'phrase'"></randomphrase>
+
+</table>
+
+</div>
