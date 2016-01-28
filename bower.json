@@ -14,7 +14,8 @@
     "angularjs-slider": "~2.3.0",
     "wavesurfer.js": "~1.0.50",
     "ngclipboard": "~1.1.0",
-    "angular-bootstrap-toggle-switch": "~0.5.6"
+    "angular-bootstrap-toggle-switch": "~0.5.6",
+    "angular-dropzone": "~0.1.2"
   },
   "private": true,
   "resolutions": {
