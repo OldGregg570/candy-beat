@@ -5,12 +5,14 @@ var express = require('express'),
     path    = require('path'),
     logger  = require('winston'),
     song    = require('./server/song.js'),
-    parser  = require ('body-parser'),
+    parser  = require('body-parser'),
     fs      = require('fs'),
     multer  = require('multer'),
     assert  = require('assert'),
     sample  = require('./server/sample.js'),
-    app     = express();
+    app     = express(),
+    config  = require('./config.js'),
+    port = process.argv[2] || config.port;
 
 app.use(parser.json());
 
@@ -45,7 +47,5 @@ app.get('/synths/:id?/',   song.getSynth);
 app.get('/samples/',       sample.getSamples);
 app.post('/sample/', up,   sample.saveSample);
 
-
-logger.info ('Starting Candy Beat server on port 80');
-
-app.listen(80);
+logger.info ('Starting Candy Beat server on port ' + port);
+app.listen(port);
