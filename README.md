@@ -1,11 +1,13 @@
-# candy-beat
-Sequencer and procedural music generator thing
+# Candy Beat
+Candy Beat is a sequencer and procedural music generator thing.
 
-# Installation
+# Install
 
     bower install
     npm install
 
-# Starting the Server
+# Usage
 
     node src/app.js
+
+To use the app, browse to [localhost](http://localhost)
