@@ -10,7 +10,9 @@
         ng-repeat="track in tracks"
         ng-init="parentIndex = $index">
 
-     <trackcontrols></trackcontrols>
+     <div class="track-controls" ng-click="openTrackSettings(track)">
+      <div class="track-settings-icon"></div>
+     </div>
 
      <div class="candy-beat-grid">
 

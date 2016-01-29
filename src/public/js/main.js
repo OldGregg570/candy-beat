@@ -237,10 +237,6 @@ angular.module('CandyBeatApp').directive('toolbar', function () {
  return { scope: false, templateUrl: '/html/templates/toolbar.html' }
 });
 
-angular.module('CandyBeatApp').directive('trackcontrols', function () {
- return { scope: false, templateUrl: '/html/templates/track-dropdown.html' }
-});
-
 angular.module('CandyBeatApp').directive('mixer', function () {
  return { scope: false, templateUrl: '/html/templates/mixer.html' }
 });
