@@ -5,6 +5,7 @@ var express = require('express'),
     path    = require('path'),
     logger  = require('winston'),
     song    = require('./server/song.js'),
+    synth   = require('./server/synth.js'),
     parser  = require('body-parser'),
     fs      = require('fs'),
     multer  = require('multer'),
@@ -40,9 +41,9 @@ app.post('/songs/',        song.saveSong);
 app.get('/songs/',         song.getSongs);
 app.get('/songs/:id?/',    song.getSong);
 
-app.post('/synths/',       song.saveSynth);
-app.get('/synths/',        song.getSynths);
-app.get('/synths/:id?/',   song.getSynth);
+app.post('/synths/',       synth.saveSynth);
+app.get('/synths/',        synth.getSynths);
+app.get('/synths/:id?/',   synth.getSynth);
 
 app.get('/samples/',       sample.getSamples);
 app.post('/sample/', up,   sample.saveSample);
