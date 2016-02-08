@@ -22,7 +22,7 @@ describe('sample module', () => {
   });
 
   it('saving sample should increase the list length by one', (done) => {
-   var saveReq = { file: { path: './test/tmp/test.wav', originalname: 'test.wav' }};
+   var saveReq = { file: { path: './test/data/test.wav', originalname: 'test.wav' }};
 
    sample.saveSample(saveReq, Response ((body) => {
     sample.getSamples({}, Response ((body) => {
