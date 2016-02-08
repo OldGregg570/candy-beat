@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "node src/app.js",
-    "test": "mocha \"./test/server/*spec.js",
+    "test": "mocha ./test/server/*spec.js",
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -- ./test/server/*spec.js -R spec"
   }
 }
