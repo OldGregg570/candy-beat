@@ -6,6 +6,7 @@
     "node": ">=0.10.28 "
   },
   "dependencies": {
+    "async": "^1.5.2",
     "body-parser": "1.12.3",
     "docstore": "0.1.1",
     "express": "4.12.3",
@@ -23,6 +24,7 @@
     "mocha": "^2.4.5"
   },
   "scripts": {
+    "start": "node src/app.js",
     "mocha": "mocha \"./test/server/*spec.js",
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -- ./test/server/*spec.js -R spec"
   }
