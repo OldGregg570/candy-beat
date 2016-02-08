@@ -1,7 +1,7 @@
 'use strict';
 
 let expect = require('chai').expect,
-    ds =  require('../../src/server/docstore.js'),
+    ds =  require('../../src/server/docstore.js')(),
     options = ds.options;
 
 describe('docstore module', () => {
