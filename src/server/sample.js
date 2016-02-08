@@ -24,5 +24,12 @@ module.exports = {
     response.status(200).json({ fname: request.file.originalname });
    });
   });
+ },
+
+ // DELETE /sample/
+ deleteSample: function (req, res) {
+  fs.unlink (samplesDir + req.filename, function (err, data) {
+   res.status(err ? 404 : 200).json({ err });
+  });
  }
 };
