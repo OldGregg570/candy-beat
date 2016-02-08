@@ -4,7 +4,6 @@
 var express = require('express'),
     path    = require('path'),
     logger  = require('winston'),
-    song    = require('./server/song.js'),
     synth   = require('./server/synth.js'),
     parser  = require('body-parser'),
     fs      = require('fs'),
@@ -36,10 +35,6 @@ var res_sendfile = function(file_path) {
 };
 
 app.get('/home',  res_sendfile('/public/index.html'));
-
-app.post('/songs/',        song.saveSong);
-app.get('/songs/',         song.getSongs);
-app.get('/songs/:id?/',    song.getSong);
 
 app.post('/synths/',       synth.saveSynth);
 app.get('/synths/',        synth.getSynths);
