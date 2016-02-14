@@ -1,5 +1,5 @@
 
-angular.module('CandyBeatApp').factory('synthService', function ($http, $window, music, randomService, $q, patchService) {
+angular.module('CandyBeatApp').factory('synthService', function ($http, $window, music, $q, patchService) {
  var ctx = new AudioContext();
  var analyserJsNode = ctx.createScriptProcessor(1024, 1, 1);
  var NOISE_SIZE = 4096;

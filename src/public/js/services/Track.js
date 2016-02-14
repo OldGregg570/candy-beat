@@ -11,7 +11,7 @@ angular.module('CandyBeatApp').factory('Cell', function () {
   return Cell;
 });
 
-angular.module('CandyBeatApp').factory('Track', function (Cell, synthService){
+angular.module('CandyBeatApp').factory('Track', function (Cell, synthService, randomService) {
   function Track(rows, cols, index, res, type, cb) {
    function fillArray(value, len) {
      var arr = [];
@@ -21,6 +21,10 @@ angular.module('CandyBeatApp').factory('Track', function (Cell, synthService){
      return arr;
     }
 
+    function randColorPart () {
+     return randomService.randInt(0, 240).toString(16);
+    }
+
     this.columns = [];
     this.index = index;
     this.resolution = res;
@@ -28,7 +32,7 @@ angular.module('CandyBeatApp').factory('Track', function (Cell, synthService){
     this.mute = false;
     this.solo = false;
     this.gain = 80;
-    this.color = '#ee3399';
+    this.color = '#' + randColorPart() + randColorPart() + randColorPart();
     this.randomizer = {
      strategy: 'splatter',
      toggleChance: 0.1,
