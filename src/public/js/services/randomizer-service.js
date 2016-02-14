@@ -1,6 +1,11 @@
 
 angular.module('CandyBeatApp').factory('randomizerService', function (randomService) {
 
+ function clip (val, min, max) {
+  if (val > max) return max;
+  if (val < min) return min;
+  return val;
+ }
 
  function forEachCell (col, fn) {
    for (var l in col) {
@@ -28,15 +33,17 @@ angular.module('CandyBeatApp').factory('randomizerService', function (randomServ
  }
 
  function _randomizePhrase (track) {
-  var note = randomService.randInt(0, 7);
+  var note = randomService.randInt (0, 7);
+  var r = Math.pow(2, track.resolution);
 
   forEachCol(track, function (col, x) {
-   col[note].toggle();
-   note += 2;
-   note %= 8;
+   if (x % r == 0 && track.randomizer.rhythmFilter[x]) {
+    col[note].toggle();
+    note += randomService.randInt(-track.randomizer.maxInterval, track.randomizer.maxInterval);
+    note = clip(note, 0, 7);
+   }
   });
  }
-
 
  var randomizeFunctions = {
   splatter: _randomizeSplatter,
