@@ -136,15 +136,19 @@ rzslider span.rz-bubble { color: #fff; }
 	.cancel-button { .pull-right; .glyphicon; .glyphicon-remove; cursor: pointer; font-size:20px; }
 }
 
+.col-one { width: 140px }
 
-.track-settings { .modal-body; padding: 20px; }
-.randomizer-settings { .modal-body; padding: 20px; top: -45px;
-
-	.two-col { .table; margin: 0; }
-	.col-one { width: 140px }
+.track-settings { .modal-body; padding: 20px; top: -42px;
+	.resolution-spinner { height: 32px; }
+	input[type=number] {
+		color: white;
+	}
 }
 
-.resolution-spinner { height: 40px; }
+.randomizer-settings { .modal-body; padding: 20px; top: -45px;
+	.two-col { .table; margin: 0; }
+}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { opacity: 1; }
 

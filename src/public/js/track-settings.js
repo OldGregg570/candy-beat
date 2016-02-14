@@ -159,6 +159,11 @@ angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, 
    });
   }
 
+  $scope.getResolutionIcon = function () {
+   var icons = { 6: 'icon-whole', 5: 'icon-half', 4: 'icon-quarter', 3: 'icon-eighth', 2: 'icon-sixteenth', 1: 'icon-thirty-second', 0: 'icon-sixty-fourth' }
+   return icons[$scope.track.resolution];
+  }
+
   $scope.drawEnvelope = function () {
    var element = $(".env-canvas" + $scope.currentSynth).get();
    // If the canvas isn't ready, wait a bit
