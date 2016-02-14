@@ -20,7 +20,6 @@ angular.module('CandyBeatApp').factory('randomizerService', function (randomServ
  function _randomizeSplatter(track) {
   forEachCol (track, function (col, x) {
    forEachCell (col, function (cell, y) {
-    if (track.randomizer.clear) cell.active = false;
     if (randomService.probability (track.randomizer.toggleChance) && track.randomizer.rhythmFilter [x]) {
         cell.toggle ();
     }
@@ -47,6 +46,12 @@ angular.module('CandyBeatApp').factory('randomizerService', function (randomServ
  return {
   strategies: ['splatter', 'phrase'],
   randomize: function (track) {
+   forEachCol (track, function (col, x) {
+    forEachCell (col, function (cell, y) {
+     if (track.randomizer.clear) cell.active = false;
+    });
+   });
+
    randomizeFunctions[track.randomizer.strategy](track);
   }
  }
