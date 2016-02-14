@@ -38,7 +38,8 @@ angular.module('CandyBeatApp').factory('Track', function (Cell, synthService, ra
      toggleChance: 0.1,
      clear: false,
      repeat: 2,
-     rhythmFilter: fillArray(true, 64)
+     rhythmFilter: fillArray(true, 64),
+     maxInterval: 2
     };
     var that = this;
 
