@@ -1,20 +1,17 @@
 <div class="randomizer-settings">
 
-
- <h4>
-  Strategy
-  <select ng-model="track.randomizer.strategy"
-          ng-options="strategy for strategy in randomizerService.strategies">
-  </select>
- </h4>
-
-
+<h3>
+ <span style="padding-right: 51px;">Strategy</span>
+ <select ng-model="track.randomizer.strategy"
+         ng-options="strategy for strategy in randomizerService.strategies">
+ </select>
+</h3>
 <!-- Two column tables  -->
-<table class="table">
+<table class="two-col">
    <tr>
-    <td>Rhythm Filter</td>
+    <td class="col-one">Rhythm Filter</td>
     <td>
-     <div class="btn-group-rhyth,">
+     <div class="btn-group-rhythm">
          <span ng-repeat="k in track.randomizer.rhythmFilter track by $index" ng-if="$index % powerOfTwo(track.resolution) == 0">
           <label ng-style="{ 'width' : (powerOfTwo(track.resolution) * 10) - (track.resolution * 2) - 4}"
                  class="btn-rhythm"
@@ -28,9 +25,9 @@
   </table>
 
 <!-- Three column tables  -->
- <table class="table">
+ <table class="table" style="margin:0;">
   <tr>
-   <td>Repeat</td>
+   <td class="col-one">Repeat</td>
    <td>
     <input type="number"
            name="input"
@@ -59,6 +56,8 @@
  </td>
 </tr>
  </table>
+
+<br/>
 
 <randomsplatter ng-show="track.randomizer.strategy === 'splatter'"></randomsplatter>
 <randomphrase   ng-show="track.randomizer.strategy === 'phrase'"></randomphrase>
