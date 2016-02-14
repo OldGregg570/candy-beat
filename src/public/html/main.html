@@ -23,7 +23,8 @@
 
          <div ng-repeat="cell in col"
                ng-click="toggleCell(track, $index, $parent.$index)"
-               ng-class="cellClass (track, $index, $parent.$index);">
+               ng-class="cellClass (track, $index, $parent.$index);"
+               ng-style="{ 'background-color' : track.color }">
          </div>
        </span>
 

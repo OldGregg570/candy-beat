@@ -28,6 +28,7 @@ angular.module('CandyBeatApp').factory('Track', function (Cell, synthService){
     this.mute = false;
     this.solo = false;
     this.gain = 80;
+    this.color = '#ee3399';
     this.randomizer = {
      strategy: 'splatter',
      toggleChance: 0.1,
