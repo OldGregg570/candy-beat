@@ -4,7 +4,8 @@ angular.module('CandyBeatApp', [
   'ngDropzone',
   'angularSpinner',
   'rzModule',
-  'ui.bootstrap']);
+  'ui.bootstrap',
+  'color.picker']);
 
 angular.module('CandyBeatApp').directive('candymain', function() {
  return { restrict: 'E', scope: {}, controller: 'mainCtrl', templateUrl: './html/main.html' }
