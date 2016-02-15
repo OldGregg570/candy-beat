@@ -23,8 +23,9 @@ angular.module('CandyBeatApp').controller('SaveSynthCtrl', function ($http, $sco
 });
 
 
-angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, $modal, $scope, $modalInstance, synthService, track, $timeout, logger, randomizerService, $sce) {
 
+
+angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, $modal, $scope, $modalInstance, synthService, track, $timeout, logger, randomizerService, $sce) {
 
   $scope.powerOfTwo = function (i) { return Math.pow(2, i);  }
 
@@ -213,6 +214,7 @@ angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, 
 
   $scope.drawEnvelope ();
 });
+
 
 angular.module('CandyBeatApp').directive('settingssynth', function() {
     return { scope: false, templateUrl: '/html/templates/settings-synthesizer.html' }
