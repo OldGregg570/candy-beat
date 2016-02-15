@@ -19,20 +19,7 @@
 
   <table class="table">
    <tr><td class="col-one">Resolution</td>
-       <td><input type="number"
-              class="resolution-spinner"
-              name="input"
-              ng-model="track.resolution"
-              min="0"
-              max="6"
-              required>
-
-            <span ng-class="getResolutionIcon()"></span>
-       </td>
-       <td>There will be {{ 64 / powerOfTwo(track.resolution) }} column{{ track.resolution === 6 ? '' : 's' }} in this track's grid. </td>
-   </tr>
-   <tr><td class="col-one">Resolution</td>
-       <td><input type="number"
+       <td class="col-two"><input type="number"
               class="resolution-spinner"
               name="input"
               ng-model="track.resolution"
@@ -47,6 +34,10 @@
    <tr></tr>
 
   </table>
+ </div>
+
+ <div class="modal-footer">
+   <button class="btn btn-default" ng-click="cancel()">OK</button>
  </div>
 </uib-tab>
 

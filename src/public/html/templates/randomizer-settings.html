@@ -1,7 +1,7 @@
 <div class="randomizer-settings">
 
 <h3>
- <span style="padding-right: 51px;">Strategy</span>
+ <span style="padding-right: 31px;">Strategy</span>
  <select ng-model="track.randomizer.strategy"
          ng-options="strategy for strategy in randomizerService.strategies">
  </select>
@@ -28,7 +28,7 @@
  <table class="table" style="margin:0;">
   <tr>
    <td class="col-one">Repeat</td>
-   <td>
+   <td class="col-two">
     <input type="number"
            name="input"
            ng-model="track.randomizer.repeat"
@@ -64,4 +64,7 @@
 
 </table>
 
+</div>
+<div class="modal-footer">
+  <button class="btn btn-default" ng-click="cancel()">OK</button>
 </div>
