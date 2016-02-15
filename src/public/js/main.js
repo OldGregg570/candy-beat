@@ -139,7 +139,6 @@ function ($scope, $http, Namer, Track, Cell, $interval, synthService, music, $mo
    var retClass =  (col + 1) % r === 0 ? 'grid-cell ' : 'grid-cell-joined ';
    retClass += track.columns[r * Math.floor(col / r)][cell].active ? 'grid-cell-active' : 'grid-cell-inactive';
    retClass += track.columns[r * Math.floor(col / r)][cell].playing ? ' grid-cell-playing' : '';
-   retClass += track.synthesizers[0].type === 'synth' ? ' grid-cell-synth' : ' grid-cell-sampler';
    return retClass;
   }
 

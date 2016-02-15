@@ -1,0 +1,78 @@
+@import "http://localhost/bootstrap/less/bootstrap.less";
+
+/**
+ * Misc
+ */
+.col-one { width: 120px; }
+.col-two { width: 120px; }
+.nav-tabs { position:relative; top: -40px; }
+.nav-tabs { li { background-color: #eee; } }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { opacity: 1; }
+.dropzone { border: 2px dashed rgba(0,0,0,0.08); min-height: 273px;	-webkit-border-radius: 3px;	border-radius: 3px; background: rgba(0,0,0,0.03); padding: 0px; }
+input[type="file"] {	display: none; }
+.dropzone .dz-default.dz-message { background: none;	width: 226px;	height: 226px;	margin: 0 auto;	position: relative;	top: 10px;	left: 0; }
+.dropzone.dz-drag-hover { border-color: orange; }
+.dropzone.dz-started .dz-message { display: none; }
+.dropzone .dz-preview, .dropzone-previews .dz-preview { width: 326px;	margin: 50 auto;	display: none; }
+.dropzone .dz-preview .dz-details, .dropzone-previews .dz-preview .dz-details { height: 100px; position: relative;	width: auto; background: #ebebeb; padding: 5px; margin-bottom: 22px;	text-align:center; }
+.dropzone .dz-default.dz-message { display: none; }
+
+/**
+ * Track Settings
+ */
+.track-settings { .modal-body; padding: 20px; top: -39px;
+	.color-picker { position: absolute; right: 20px; top: 20px; border: 2px #eee solid;}
+	.resolution-spinner { height: 26px; }
+	input[type=number] { color: white;	position:relative; top:-12px; }
+}
+
+.randomizer-settings { .modal-body; padding: 20px; top: -45px;
+	.btn-splatter-persistence { .btn; .btn-xs; .btn-primary; width: 80px; }
+	.two-col { .table; margin: 0; }
+	.btn-rhythm { .btn; .btn-info; background-color: #fff; padding: 0; margin: 0; width: 8px; height: 16px;}
+	.btn-group-rhythm { .btn-group; padding: 0; margin: 0; }
+	.btn-rhythm.active { background-color: #dd88aa;}
+}
+
+/**
+ * Synyh Settings
+ */
+.synth-settings { padding: 0px;
+	.modal-body { padding: 0 0 30 55px; }
+	.modal-header { padding: 0;
+		.synth-pagination { .pagination; .pull-left; display:inline; margin: 0; padding: 0 5 0 0px; }
+	}
+	td {	padding: 5px; }
+	.type-select { .form-control; height: 60px; border: none; width: 100%; font-size: 40px; padding: 2 0 2 16px; }
+	.span-oscs     { .pull-left; width: 450px; height: 200px; padding: 15 30 0 0px;
+		.osc-knob-labels td {
+			font-size: 16px;
+			color: #999;
+			padding-bottom: 15px;
+			text-align: center;
+		}
+	};
+	.span-sampler  { .pull-left; width: 450px; height: 200px; padding-top: 20px; }
+	.span-envelope { .pull-left;  padding: 0 0 0 40px; }
+	.env-canvas 						{	width: 250px; height: 122px; margin: 21 0 20 0px; }
+	.span-effects { padding-top: 20px;
+		.border-right {		padding-right:35px;	}
+		.padding-left {		padding-left:35px;	}
+		.filter-select { .form-control; width: 200px; }
+		.lfo-select { .form-control; width: 170px; }
+		.knob-lfo-level { font-size: 16px; position: relative; left: 2px; }
+		.knob-lfo-frequency { font-size: 16px; position: relative; left: -4px; }
+	}
+}
+
+/**
+ * Modal Footer
+ */
+.modal-footer { background-color: #f5f5f5;
+	.load-select { .form-control; .pull-left; display:inline; width: 200px; height: 31px;}
+	.btn-footer { .btn; .btn-default; .pull-left; .glyphicon; border-left: 0; top:0px; height: 31px; display:inline; }
+	.btn-save {  .btn-footer; .glyphicon-floppy-save; }
+	.btn-shuffle { .btn-footer; .glyphicon-random; }
+	.cancel-button { .pull-right; .glyphicon; .glyphicon-remove; cursor: pointer; font-size:20px; }
+}
