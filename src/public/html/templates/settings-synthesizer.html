@@ -82,7 +82,7 @@
   <!-- <span class="add-synthesizer" ng-click="addSynthesizer()"></span>
   <span class="remove-synthesizer" ng-click="removeSynthesizer()"></span> -->
 
- <select class="sound-select"
+ <select class="load-select"
          ng-show="track.synthesizers[0].type === 'synth'"
          ng-model="selectedPatch"
          ng-change="loadSynth(selectedPatch._id)"
@@ -90,7 +90,7 @@
    {{ patch.name }}
  </select>
 
- <select class="sound-select"
+ <select class="load-select"
          ng-show="track.synthesizers[0].type === 'sampler'"
          ng-model="selectedSample"
          ng-change="loadSample(selectedSample)"

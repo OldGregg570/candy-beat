@@ -23,8 +23,9 @@ angular.module('CandyBeatApp').controller('SaveSynthCtrl', function ($http, $sco
 });
 
 
-angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, $modal, $scope, $modalInstance, synthService, track, $timeout, logger, randomizerService, $sce) {
 
+
+angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, $modal, $scope, $modalInstance, synthService, track, $timeout, logger, randomizerService, $sce) {
 
   $scope.powerOfTwo = function (i) { return Math.pow(2, i);  }
 
@@ -159,6 +160,11 @@ angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, 
    });
   }
 
+  $scope.getResolutionIcon = function () {
+   var icons = { 6: 'icon-whole', 5: 'icon-half', 4: 'icon-quarter', 3: 'icon-eighth', 2: 'icon-sixteenth', 1: 'icon-thirty-second', 0: 'icon-sixty-fourth' }
+   return icons[$scope.track.resolution];
+  }
+
   $scope.drawEnvelope = function () {
    var element = $(".env-canvas" + $scope.currentSynth).get();
    // If the canvas isn't ready, wait a bit
@@ -208,6 +214,7 @@ angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, 
 
   $scope.drawEnvelope ();
 });
+
 
 angular.module('CandyBeatApp').directive('settingssynth', function() {
     return { scope: false, templateUrl: '/html/templates/settings-synthesizer.html' }

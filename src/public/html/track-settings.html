@@ -5,27 +5,40 @@
   <uib-tab-heading>Track Settings</uib-tab-heading>
 
  <div class="track-settings">
+
+  <color-picker ng-model="track.color"
+                class="color-picker"
+                color-picker-format="'hex'"
+                color-picker-alpha="false"
+                color-picker-swatch-only="true"
+                color-picker-pos="'bottom right'">
+
+  </color-picker>
+
   <h3> Track {{ track.index + 1 }} </h3>
-  <h4> Resolution: {{ track.resolution }} </h4>
-  <input type="number"
-         class="resolution-spinner"
-         name="input"
-         ng-model="track.resolution"
-         min="0"
-         max="6"
-         required>
+
+  <table class="table">
+   <tr><td class="col-one">Resolution</td>
+       <td class="col-two"><input type="number"
+              class="resolution-spinner"
+              name="input"
+              ng-model="track.resolution"
+              min="0"
+              max="6"
+              required>
+
+            <span ng-class="getResolutionIcon()"></span>
+       </td>
+       <td>There will be {{ 64 / powerOfTwo(track.resolution) }} column{{ track.resolution === 6 ? '' : 's' }} in this track's grid. </td>
+   </tr>
+   <tr></tr>
+
+  </table>
  </div>
 
-
-<color-picker ng-model="track.color"
-              class="color-picker"
-              color-picker-format="'hex'"
-              color-picker-alpha="false"
-              color-picker-swatch-only="true"
-              color-picker-pos="'bottom right'">
-              
-</color-picker>
-
+ <div class="modal-footer">
+   <button class="btn btn-default" ng-click="cancel()">OK</button>
+ </div>
 </uib-tab>
 
 <!--  Synth Settings -->
