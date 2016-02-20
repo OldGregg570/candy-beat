@@ -12,12 +12,12 @@
     <td class="col-one">Rhythm Filter</td>
     <td>
      <div class="btn-group-rhythm">
-         <span ng-repeat="k in track.randomizer.rhythmFilter track by $index" ng-if="$index % powerOfTwo(track.resolution) == 0">
-          <label ng-style="{ 'width' : (powerOfTwo(track.resolution) * 10) - (track.resolution * 2) - 4}"
-                 class="btn-rhythm"
-                 ng-model="track.randomizer.rhythmFilter[$index]"
-                 uib-btn-checkbox>
-         </label>
+         <span ng-repeat="k in track.randomizer.rhythmFilter track by $index"
+               ng-if="$index % powerOfTwo(track.resolution) == 0"
+               ng-style="{ 'width' : (powerOfTwo(track.resolution) * 10) - (track.resolution * 2) + 4}"
+               class="btn-rhythm"
+               ng-model="track.randomizer.rhythmFilter[$index]"
+               uib-btn-checkbox>
          </span>
      </div>
     </td>
