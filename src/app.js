@@ -4,6 +4,7 @@
 var express = require('express'),
     path    = require('path'),
     logger  = require('winston'),
+    grid    = require('./server/grid.js')(),
     synth   = require('./server/synth.js'),
     parser  = require('body-parser'),
     fs      = require('fs'),
@@ -39,6 +40,10 @@ app.get('/home',  res_sendfile('/public/index.html'));
 app.post('/synths/',       synth.saveSynth);
 app.get('/synths/',        synth.getSynths);
 app.get('/synths/:id?/',   synth.getSynth);
+
+app.post('/grid/',         grid.save);
+app.get('/grid/',          grid.getAll);
+app.get('/grid/:id?/',     grid.get);
 
 app.get('/samples/',       sample.getSamples);
 app.post('/sample/', up,   sample.saveSample);
