@@ -39,7 +39,9 @@ angular.module('CandyBeatApp').factory('randomizerService', function (randomServ
   forEachCol(track, function (col, x) {
    if (x % r == 0 && track.randomizer.rhythmFilter[x]) {
     col[note].toggle();
-    note += randomService.randInt(-track.randomizer.maxInterval, track.randomizer.maxInterval);
+    var min = note === 0 ? 0 : -track.randomizer.maxInterval;
+    var max = note === 7 ? 0 : track.randomizer.maxInterval;
+    note += randomService.randInt(min, max);
     note = clip(note, 0, 7);
    }
   });
