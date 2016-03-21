@@ -1,24 +1,24 @@
 'use strict';
-var assert = require('assert'),
-    ds = require ('docstore');
 
-var docstoreOptions = {
-    format: {
-       serialize: function (obj) {
-           return JSON.stringify(obj, null, '\t');
-       },
-       deserialize: function (buffer) {
+module.exports = function (ext) {
+ var assert = require('assert'),
+     ds = require ('docstore'),
+     docstore = {};
+
+ var docstoreOptions = {
+   format: {
+      serialize: function (obj) {
+        return JSON.stringify(obj, null, '\t');
+      },
+      deserialize: function (buffer) {
         try {
-            return JSON.parse(buffer);
+          return JSON.parse(buffer);
         } catch (e) {
-            throw new Error(e.name);
+          console.error(e);
         }
       }
     }
  };
-
-module.exports = function (ext) {
- var docstore = {};
 
  function _open (extension, cb) {
   docstoreOptions.format.extension = extension;
@@ -54,5 +54,14 @@ module.exports = function (ext) {
   });
  }
 
+ docstore.save = function (doc) {
+  return new Promise(function (resolve) {
+   docstore.store.save(doc, function (saveErr) {
+    assert(!saveErr, saveErr);
+    resolve(saveErr);
+   });
+  });
+ }
+ 
  return docstore;
 };
