@@ -22,7 +22,8 @@ angular.module('CandyBeatApp').factory('Track', function (Cell, synthService, ra
     }
 
     function randColorPart () {
-     return randomService.randInt(0, 240).toString(16);
+     var c = randomService.randInt(0, 240).toString(16);
+     return (c.length === 1 ? '0' : '') + c;
     }
 
     this.columns = [];
