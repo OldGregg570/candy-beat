@@ -23,6 +23,7 @@ body { background-color: #fff; font-family: "Arial", Helvetica, sans-serif; }
 .floating-log { position:fixed;	width:320px;	z-index:10000000;	right:0;	top: 0; }
 .alert {	padding: 10px 40px 10px 10px;	width:320px;	position: absolute;	animation: log-slide 0.125s;	transition-timing-function: ease-in; }
 rzslider span.rz-bubble { color: #fff; }
+@keyframes log-slide	{	from { right: -360; } 	to { right: 0;  } }
 
 /**
  * Upper-left Menu
@@ -59,23 +60,24 @@ rzslider span.rz-bubble { color: #fff; }
 /**
  * Tracks
 	*/
+
+.candy-beat-grid	{ width: auto; float: left; display:inline-block;
+	.column-active { background-color: @color-column-active; }
+	.grid-cell { width: 12px; height: 12px; margin: 0 1 1 0px; cursor: pointer;}
+	.grid-cell-small { width: 3px; height: 3px; margin: 0 1 0 0px; }
+	.grid-cell-joined { .grid-cell;	margin: 0 0 1 0px;	width: 13px; }
+	.grid-cell-active { opacity: 0.8; }
+	.grid-cell-playing { animation: highlight-cell 1s; }
+	.grid-cell-inactive { opacity: 0.3; }
+	@keyframes highlight-cell { from { opacity: 0;  }  to { opacity: 1;} }
+}
+
 .container-tracks { .container-fluid; width:940px; margin:auto; margin-top: 15px; height:645px; ;
 	.candy-track { margin: 12 0 12 0px; }
 	.track-controls {	float: left; padding-right: 4px; vertical-align: middle; text-align: center;
 		.track-settings-icon { .btn; .btn-default; .glyphicon; .glyphicon-option-vertical; display: inline-block; font-size:21px; color: #777; height: 103px; width: 24px; top: 0px; padding: 2px; padding-top:40px; }
 	}
 	.track-icon	{	margin: 0 0 6 0px;}
-
-	.candy-beat-grid	{ width: 840px; float: left;
-		.column-active { background-color: @color-column-active; }
-		.grid-cell { width: 12px; height: 12px; margin: 0 1 1 0px; cursor: pointer;}
-		.grid-cell-joined { .grid-cell;	margin: 0 0 1 0px;	width: 13px; }
-		.grid-cell-active { opacity: 0.8; }
-		.grid-cell-playing { animation: highlight-cell 1s; }
-		.grid-cell-inactive { opacity: 0.3; }
-		@keyframes highlight-cell { from { opacity: 0;  }  to { opacity: 1;} }
-		@keyframes log-slide	{	from { right: -360; } 	to { right: 0;  } }
-	}
 }
 
 /**

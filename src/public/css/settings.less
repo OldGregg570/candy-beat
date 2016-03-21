@@ -17,23 +17,35 @@ input[type="file"] {	display: none; }
 .dropzone .dz-preview, .dropzone-previews .dz-preview { width: 326px;	margin: 50 auto;	display: none; }
 .dropzone .dz-preview .dz-details, .dropzone-previews .dz-preview .dz-details { height: 100px; position: relative;	width: auto; background: #ebebeb; padding: 5px; margin-bottom: 22px;	text-align:center; }
 .dropzone .dz-default.dz-message { display: none; }
+.two-col { .table; margin: 0; }
 
 /**
  * Track Settings
  */
-.track-settings { .modal-body; padding: 20px; top: -39px;
-	.color-picker { position: absolute; right: 20px; top: 20px; border: 2px #eee solid;}
-	.resolution-spinner { height: 26px; }
-	input[type=number] { color: white;	position:relative; top:-12px; }
-}
+	.track-settings { .modal-body; padding: 20px; top: -39px;
+		.color-picker { position: absolute; right: 20px; top: 20px; border: 2px #eee solid;}
+		.resolution-spinner { height: 26px; }
+		.track-name { margin-right:49px; }
+		input[type=number] { color: white;	position:relative; top:-12px; }
+		.btn-grid { .btn; .btn-default; height: 30px; position: relative; top: 0;	padding: 2px;}
+		.btn-load-grid { .btn; .btn-default; height: 26px; border:none;	padding: 0px;}
+		.save-icon-grid { .glyphicon; .glyphicon-floppy-save; position: relative; top: -4; margin: 10; }
+		.load-icon { .btn; .btn-default; .glyphicon; .glyphicon-open; float: left; top: 0px; margin-left: 4px; height: 30px;}
+		.candy-beat-grid { float: none; }
+		.list-grid { padding: 0; }
+		.popover { min-width:300px; min-height:80px; padding: 4px; }
 
-.randomizer-settings { .modal-body; padding: 20px; top: -45px;
-	.btn-splatter-persistence { .btn; .btn-xs; .btn-primary; width: 80px; }
-	.two-col { .table; margin: 0; }
-	.btn-rhythm { .btn; .btn-info; background-color: #fff; padding: 0; margin: 0; width: 8px; height: 16px;}
-	.btn-group-rhythm { .btn-group; padding: 0; margin: 0; }
-	.btn-rhythm.active { background-color: #dd88aa;}
-}
+	}
+
+	.randomizer-settings { .modal-body; padding: 20px; top: -45px;
+		.btn-splatter-persistence { .btn; .btn-xs; .btn-primary; width: 80px; }
+		.btn-rhythm { .btn; .btn-info; background-color: #fff; padding: 0; margin: 1px; height: 16px;}
+		.btn-group-rhythm { .btn-group; padding: 0; margin: 0; }
+		.btn-rhythm.active { background-color: #dd88aa;}
+	}
+
+
+
 
 /**
  * Synyh Settings

@@ -15,8 +15,34 @@
 
   </color-picker>
 
-  <h3> Track {{ track.index + 1 }} </h3>
 
+  <h3 class="track-name pull-left"> Track {{ track.index + 1 }}</h3>
+  <h3 class="pull-left">
+  <div style="height:34px;">
+   <div class="candy-beat-grid">
+    <span class="btn-grid"
+          ng-click="saveGrid()">
+     <span ng-repeat="col in track.columns"
+           style="display: inline-block;">
+       <div ng-repeat="cell in col"
+            class="grid-cell-small"
+            ng-style="{ 'background-color' : track.color }"
+            ng-class="cellClass(cell);">
+       </div>
+     </span>
+     <span class="save-icon-grid"></span>
+    </span>
+   </div>
+  </div>
+ </h3>
+ <h3>
+  <span class="load-icon"
+        uib-popover-template="'html/templates/load-grid.html'"
+        popover-title="Load a Saved Grid"
+        popover-placement="bottom"
+        type="button">
+  </span>
+ </h3>
   <table class="table">
    <tr><td class="col-one">Resolution</td>
        <td class="col-two"><input type="number"
@@ -31,10 +57,13 @@
        </td>
        <td>There will be {{ 64 / powerOfTwo(track.resolution) }} column{{ track.resolution === 6 ? '' : 's' }} in this track's grid. </td>
    </tr>
-   <tr></tr>
-
   </table>
+
+
+
  </div>
+
+ <span style="clear:both;"></span>
 
  <div class="modal-footer">
    <button class="btn btn-default" ng-click="cancel()">OK</button>

@@ -25,7 +25,7 @@ angular.module('CandyBeatApp').controller('SaveSynthCtrl', function ($http, $sco
 
 
 
-angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, $modal, $scope, $modalInstance, synthService, track, $timeout, logger, randomizerService, $sce) {
+angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, $modal, $scope, $modalInstance, synthService, track, $timeout, logger, randomizerService, $sce, Cell) {
 
   $scope.powerOfTwo = function (i) { return Math.pow(2, i);  }
 
@@ -38,6 +38,16 @@ angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, 
   $scope.tooltips = {
    randomizer_splatter_persistence : $sce.trustAsHtml("<p>When set to <b>Clear</b>, expect a simillar number of cells to be active for each generation.</p>" +
                                           "<p>When set to <b>Compound</b>, expect the number of active cells to gradually increase until about half are active.</p>")
+  }
+
+  $http.get('/grid/').then(function (res) {
+   $scope.grids = res.data.grids.map((g) => ({resolution: g.resolution, color: g.color, columns: g.columns.map((c) => c.map ((cell) => new Cell (cell))) }) );
+  });
+
+  $scope.loadGrid = function (grid) {
+   $scope.track.columns = grid.columns;
+   $scope.track.color = grid.color;
+   $scope.track.resolution = grid.resolution;
   }
 
   $scope.ratioToPercent = function (ratio) {
@@ -105,7 +115,11 @@ angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, 
    $scope.currentSynth = pageIndex;
    $scope.drawEnvelope ();
   }
-
+  $scope.cellClass = function (cell) {
+   var retClass = cell.active ? 'grid-cell-active' : 'grid-cell-inactive';
+   retClass += cell.playing ? ' grid-cell-playing' : '';
+   return retClass;
+  }
   $scope.randomize = function (synth) {
    var generatorFunction = {
     'sampler' : synthService.patches.generateRandomSampler,
@@ -121,6 +135,18 @@ angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, 
 
   $scope.setType = function (synth) {
    $scope.randomize(synth);
+  }
+
+  $scope.saveGrid = function () {
+
+   var reqBody = {
+    grid: $scope.track.columns,
+    color: $scope.track.color,
+    resolution: $scope.track.resolution
+   };
+   $http.post('/grid/', reqBody).then(function (res) {
+    alert(res);
+   });
   }
 
   $scope.loadPatches = function () {
