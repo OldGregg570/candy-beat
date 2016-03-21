@@ -1,0 +1,15 @@
+<div class="list-grid" ng-repeat="grid in grids">
+ <div class="candy-beat-grid">
+  <span class="btn-load-grid"
+        ng-click="loadGrid(grid)">
+   <span ng-repeat="col in grid.columns"
+         style="display: inline-block;">
+     <div ng-repeat="cell in col"
+          class="grid-cell-small"
+          ng-style="{ 'background-color' : grid.color }"
+          ng-class="cellClass(cell);">
+     </div>
+   </span>
+  </span>
+ </div>
+</div>
