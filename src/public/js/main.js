@@ -52,7 +52,15 @@ function ($scope, $http, Namer, Track, Cell, $interval, synthService, music, $mo
       for (var c in track.columns[$scope.activeColumn]) {
         var cell = track.columns[$scope.activeColumn][c];
         if ($scope.activeColumn % r === 0 && cell.active)  {
-         synthService.playNote($scope.scale.notes[c], track.synthesizers[c % track.synthesizers.length], track.gain);
+
+         if (track.midiChannel !== null) {
+             synthService.sendMidiMessage($scope.scale.notes[c], track.midiChannel)
+         }
+
+         if (track.synthOut) {
+             synthService.playNote($scope.scale.notes[c], track.synthesizers[c % track.synthesizers.length], track.gain);
+         }
+
          cell.playing = true;
          $timeout(doLater(cell, 'unplay'), 500);
         }

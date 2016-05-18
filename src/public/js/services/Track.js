@@ -29,6 +29,8 @@ angular.module('CandyBeatApp').factory('Track', function (Cell, synthService, ra
     this.columns = [];
     this.index = index;
     this.resolution = res;
+    this.midiChannel = 0;
+    this.synthOut = true;
     this.locked = false;
     this.mute = false;
     this.solo = false;

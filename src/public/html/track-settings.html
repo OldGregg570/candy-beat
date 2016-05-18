@@ -57,6 +57,26 @@
        </td>
        <td>There will be {{ 64 / powerOfTwo(track.resolution) }} column{{ track.resolution === 6 ? '' : 's' }} in this track's grid. </td>
    </tr>
+      <tr><td>MIDI OUT Channel</td>
+          <td><input type="checkbox"
+                     ng-model="track.synthOut">
+              <input type="number"
+                     class="resolution-spinner"
+                     name="input"
+                     ng-model="track.midiChannel"
+                     min="0"
+                     max="15">
+
+          </td>
+          <td>
+              <span ng-if="track.midiChannel !== null">
+                Notes from this track will be output to MIDI channel {{ track.midiChannel }}.
+              </span>
+              <span ng-if="track.midiChannel === null">
+                Notes from this track will be output using this track's synthesizer.
+              </span>
+          </td>
+      </tr>
   </table>
 
 

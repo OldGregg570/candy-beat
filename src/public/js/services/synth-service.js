@@ -13,6 +13,10 @@ angular.module('CandyBeatApp').factory('synthService', function ($http, $window,
 
  var masterVolume = 0.5;
 
+ function sendMidiMessage(note, channel) {
+     $http.post('/midi/', { note: note, channel: channel });
+ }
+
  function playNote (note, synthesizer, trackGain) {
    var oscIndex = 0;
    var envelopeVco = ctx.createGain();
@@ -97,6 +101,7 @@ angular.module('CandyBeatApp').factory('synthService', function ($http, $window,
    return a;
   },
   playNote:        playNote,
+  sendMidiMessage: sendMidiMessage,
   setMasterVolume: function (volume) {
      masterVolume =  volume / 50.0;
     },

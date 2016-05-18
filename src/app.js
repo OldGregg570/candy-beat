@@ -13,7 +13,19 @@ var express = require('express'),
     sample  = require('./server/sample.js'),
     app     = express(),
     config  = require('./config.js'),
-    port = process.argv[2] || config.port;
+    midi    = require('midi'),
+    port = process.argv[2] || config.port,
+    output = new midi.output(),
+    usbOut = true;
+
+console.log(output.getPortName(1));
+
+try {
+ output.openPort(1);
+} catch(e) {
+ console.log("Couldn't connect to usb UNO device.");
+ usbOut = false;
+}
 
 app.use(parser.json());
 
@@ -47,6 +59,16 @@ app.get('/grid/:id?/',     grid.get);
 
 app.get('/samples/',       sample.getSamples);
 app.post('/sample/', up,   sample.saveSample);
+
+
+app.post('/midi/', (req, res) => {
+    output.sendMessage([0x90 + req.body.channel, req.body.note + 60, 70]);
+    setTimeout(() => {
+        output.sendMessage([0x80 + req.body.channel, req.body.note + 60, 70]);
+    }, 100);
+
+    res.status(200).send();
+});
 
 logger.info ('Starting Candy Beat server on port ' + port);
 app.listen(port);
