@@ -1,5 +1,5 @@
 
-angular.module('CandyBeatApp').factory('synthService', function ($http, $window, music, $q, patchService) {
+angular.module('CandyBeatApp').factory('synthService', function ($window, music, $q, patchService) {
  var ctx = new AudioContext();
  var analyserJsNode = ctx.createScriptProcessor(1024, 1, 1);
  var NOISE_SIZE = 4096;
@@ -13,10 +13,6 @@ angular.module('CandyBeatApp').factory('synthService', function ($http, $window,
 
  var masterVolume = 0.5;
 
- function sendMidiMessage(note, channel) {
-     $http.post('/midi/', { note: note, channel: channel });
- }
-
  function playNote (note, synthesizer, trackGain) {
    var oscIndex = 0;
    var envelopeVco = ctx.createGain();
@@ -29,7 +25,7 @@ angular.module('CandyBeatApp').factory('synthService', function ($http, $window,
    var lfo = ctx.createOscillator();
    var lfoGain = ctx.createGain ();
 
-   lfo.frequency.value = synthesizer.lfo.frequency
+   lfo.frequency.value = synthesizer.lfo.frequency;
    lfoGain.gain.value = synthesizer.lfo.level;
    lfo.connect(lfoGain);
 
@@ -101,7 +97,6 @@ angular.module('CandyBeatApp').factory('synthService', function ($http, $window,
    return a;
   },
   playNote:        playNote,
-  sendMidiMessage: sendMidiMessage,
   setMasterVolume: function (volume) {
      masterVolume =  volume / 50.0;
     },

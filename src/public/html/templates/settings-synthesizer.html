@@ -1,7 +1,6 @@
 <div class="synth-settings"
       ng-repeat="synth in track.synthesizers"
       ng-if="$index === currentSynth">
- <span>
 
 <div class="modal-header"
      ng-if="track.synthesizers[0].type === 'sampler'">
@@ -18,7 +17,7 @@
  <settingssampler></settingssampler>
 
  <span class="span-envelope">
-  <h3>ASR Envelope</h3>
+  <h3>AHR Envelope</h3>
 
   <canvas class="env-canvas" ng-class="'env-canvas' + $index"></canvas></br>
  </br>
@@ -27,10 +26,10 @@
   <input knob class="synth-knob" oscindex="$index" knobType="release" value="synth.envelope.release">
  </span>
 
- </span>
 
 
  <span class="clearfix"></span>
+
 
  <span class="span-effects">
    <table>
@@ -74,36 +73,13 @@
     </td>
     </tr>
    </table>
- </span>
+ </span>w
+</div>
 </div>
 
 <div class="modal-footer">
- <span>
-  <!-- <span class="add-synthesizer" ng-click="addSynthesizer()"></span>
-  <span class="remove-synthesizer" ng-click="removeSynthesizer()"></span> -->
-
- <select class="load-select"
-         ng-show="track.synthesizers[0].type === 'synth'"
-         ng-model="selectedPatch"
-         ng-change="loadSynth(selectedPatch._id)"
-         ng-options="patch as patch.name for patch in patches">
-   {{ patch.name }}
- </select>
-
- <select class="load-select"
-         ng-show="track.synthesizers[0].type === 'sampler'"
-         ng-model="selectedSample"
-         ng-change="loadSample(selectedSample)"
-         ng-options="sample for sample in samples">
-   {{ sample.name }}
- </select>
-
-
- <button class="btn-save" ng-click="saveSynth()"></button>
- <button class="btn-shuffle" ng-click="randomize(synth)"></button>
-
-</span>
+    <span>
+    <button class="btn-shuffle" ng-click="randomize(synth)"></button>
+    </span>
     <button class="btn btn-default" ng-click="cancel()">OK</button>
-</div>
-
 </div>

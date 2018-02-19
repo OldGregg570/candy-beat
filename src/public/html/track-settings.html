@@ -17,32 +17,6 @@
 
 
   <h3 class="track-name pull-left"> Track {{ track.index + 1 }}</h3>
-  <h3 class="pull-left">
-  <div style="height:34px;">
-   <div class="candy-beat-grid">
-    <span class="btn-grid"
-          ng-click="saveGrid()">
-     <span ng-repeat="col in track.columns"
-           style="display: inline-block;">
-       <div ng-repeat="cell in col"
-            class="grid-cell-small"
-            ng-style="{ 'background-color' : track.color }"
-            ng-class="cellClass(cell);">
-       </div>
-     </span>
-     <span class="save-icon-grid"></span>
-    </span>
-   </div>
-  </div>
- </h3>
- <h3>
-  <span class="load-icon"
-        uib-popover-template="'html/templates/load-grid.html'"
-        popover-title="Load a Saved Grid"
-        popover-placement="bottom"
-        type="button">
-  </span>
- </h3>
   <table class="table">
    <tr><td class="col-one">Resolution</td>
        <td class="col-two"><input type="number"
@@ -57,22 +31,27 @@
        </td>
        <td>There will be {{ 64 / powerOfTwo(track.resolution) }} column{{ track.resolution === 6 ? '' : 's' }} in this track's grid. </td>
    </tr>
-      <tr><td>MIDI OUT Channel</td>
-          <td><input type="checkbox"
-                     ng-model="track.synthOut">
+      <tr><td>Output</td>
+          <td>
+              <select class="midiout-select" ng-model="track.midiOutput" ng-change="selectMidiOut()"
+                      ng-options="out.name for out in midiOutputs track by out.id">
+                      {{ out.name }}
+              </select>
+              <span ng-if="!track.midiOutput">
+              Channel
               <input type="number"
-                     class="resolution-spinner"
+                     class="midich-spinner"
                      name="input"
                      ng-model="track.midiChannel"
                      min="0"
                      max="15">
-
-          </td>
-          <td>
-              <span ng-if="track.midiChannel !== null">
-                Notes from this track will be output to MIDI channel {{ track.midiChannel }}.
               </span>
-              <span ng-if="track.midiChannel === null">
+          </td>
+          <td class="midich-select-text">
+              <span ng-if="!track.midiOutput.internal">
+                Notes from this track will be output to {{ ggg.selectedMidiOutput }} on MIDI channel {{ track.midiChannel }}.
+              </span>
+              <span ng-if="track.midiOutput.internal">
                 Notes from this track will be output using this track's synthesizer.
               </span>
           </td>

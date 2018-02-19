@@ -3,52 +3,50 @@ angular.module('CandyBeatApp').filter('sampleName', function () {
   function initialCaps (e) {
    var first = e.slice(0, 1);
    return first.toUpperCase() + e.substring(1);
-  };
+  }
   return input.split('.')[0].split('_').splice(1, input.split('_').length).join (' ');
  }
 });
 
-angular.module('CandyBeatApp').controller('SaveSynthCtrl', function ($http, $scope, $modalInstance) {
-
-
+angular.module('CandyBeatApp').controller('SaveSynthCtrl', function ($scope, $modalInstance) {
   $scope.patchName = '';
 
   $scope.confirmSave = function (name) {
     $modalInstance.close(name);
-  }
+  };
 
   $scope.cancel = function () {
     $modalInstance.dismiss ('cancel');
-  }
+  };
 });
 
+angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($modal, $scope, $modalInstance, synthService, track, $timeout, logger, randomizerService, $sce, Cell, midi) {
+    $scope.powerOfTwo = function (i) { return Math.pow(2, i);  };
 
+    $scope.midiOutputs = midi.getOutputs();
 
+    if (!$scope.midiOutputs[0].internal) {
+        $scope.midiOutputs.unshift({name: "Internal", internal: true, id: "INTERNAL" });
+    }
 
-angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, $modal, $scope, $modalInstance, synthService, track, $timeout, logger, randomizerService, $sce, Cell) {
+    console.log($scope.midiOutputs);
 
-  $scope.powerOfTwo = function (i) { return Math.pow(2, i);  }
-
-  $scope.track = track;
-  $scope.currentSynth = 0;
-  $scope.synthType = $scope.track.synthesizers[0].type === 'synth';
-  $scope.patches = [];
-  $scope.samples = [];
-  $scope.randomizerService = randomizerService;
-  $scope.tooltips = {
-   randomizer_splatter_persistence : $sce.trustAsHtml("<p>When set to <b>Clear</b>, expect a simillar number of cells to be active for each generation.</p>" +
+    $scope.track = track;
+    $scope.currentSynth = 0;
+    $scope.synthType = $scope.track.synthesizers[0].type === 'synth';
+    $scope.patches = [];
+    $scope.samples = [];
+    $scope.randomizerService = randomizerService;
+    $scope.tooltips = {
+    randomizer_splatter_persistence : $sce.trustAsHtml("<p>When set to <b>Clear</b>, expect a simillar number of cells to be active for each generation.</p>" +
                                           "<p>When set to <b>Compound</b>, expect the number of active cells to gradually increase until about half are active.</p>")
-  }
+    }
 
-  $http.get('/grid/').then(function (res) {
-   $scope.grids = res.data.grids.map((g) => ({resolution: g.resolution, color: g.color, columns: g.columns.map((c) => c.map ((cell) => new Cell (cell))) }) );
-  });
-
-  $scope.loadGrid = function (grid) {
-   $scope.track.columns = grid.columns;
-   $scope.track.color = grid.color;
-   $scope.track.resolution = grid.resolution;
-  }
+    $scope.loadGrid = function (grid) {
+        $scope.track.columns = grid.columns;
+        $scope.track.color = grid.color;
+        $scope.track.resolution = grid.resolution;
+    }
 
   $scope.ratioToPercent = function (ratio) {
    return Math.floor(ratio * 100);
@@ -70,6 +68,10 @@ angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, 
    showTicks: true,
    hideLimitLabels: true,
    showTicksValues: false
+  };
+
+  $scope.selectMidiOut = function () {
+          console.log($scope.track.midiOutput);
   };
 
   $scope.selectedSample = $scope.track.synthesizers[$scope.currentSynth].oscs[0].sample;
@@ -137,55 +139,6 @@ angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, 
    $scope.randomize(synth);
   }
 
-  $scope.saveGrid = function () {
-
-   var reqBody = {
-    grid: $scope.track.columns,
-    color: $scope.track.color,
-    resolution: $scope.track.resolution
-   };
-   $http.post('/grid/', reqBody).then(function (res) {
-    alert(res);
-   });
-  }
-
-  $scope.loadPatches = function () {
-   $http.get('/synths/').success(function (patches) {
-     $scope.patches = patches;
-   }).error(function (err) {});
-  }
-
-  $scope.loadPatches ();
-
-  $scope.loadSamples = function () {
-   $http.get('/samples/').success(function (samples) {
-     $scope.samples = samples;
-   }).error(function (err) {});
-  }
-
-  $scope.loadSamples ();
-
-  $scope.saveSynth = function () {
-   var modalInstance = $modal.open({
-     animation: true,
-     templateUrl: '/html/save-synth.html',
-     controller: 'SaveSynthCtrl',
-     size: 'md'
-   });
-
-   modalInstance.result.then(function (name) {
-    $scope.track.synthesizers[$scope.currentSynth].name = name;
-    $http.post ('/synths/', $scope.track.synthesizers[$scope.currentSynth]).success($scope.loadPatches);
-   }, function () { });
-  }
-
-  $scope.loadSynth = function (id) {
-   $http.get ('/synths/' + id + '/').success(function (synth) {
-     $scope.track.synthesizers[$scope.currentSynth] = synth;
-     $timeout ($scope.drawEnvelope, 0);
-   });
-  }
-
   $scope.getResolutionIcon = function () {
    var icons = { 6: 'icon-whole', 5: 'icon-half', 4: 'icon-quarter', 3: 'icon-eighth', 2: 'icon-sixteenth', 1: 'icon-thirty-second', 0: 'icon-sixty-fourth' }
    return icons[$scope.track.resolution];
@@ -243,25 +196,25 @@ angular.module('CandyBeatApp').controller('TrackSettingsCtrl', function ($http, 
 
 
 angular.module('CandyBeatApp').directive('settingssynth', function() {
-    return { scope: false, templateUrl: '/html/templates/settings-synthesizer.html' }
+    return { scope: false, templateUrl: './src/public/html/templates/settings-synthesizer.html' }
 });
 
 angular.module('CandyBeatApp').directive('settingsoscs', function() {
-    return { scope: false, templateUrl: '/html/templates/settings-oscs.html' }
+    return { scope: false, templateUrl: './src/public/html/templates/settings-oscs.html' }
 });
 
 angular.module('CandyBeatApp').directive('settingssampler', function() {
-    return { scope: false, templateUrl: '/html/templates/settings-sampler.html' }
+    return { scope: false, templateUrl: './src/public/html/templates/settings-sampler.html' }
 });
 
 angular.module('CandyBeatApp').directive('randomizersettings', function() {
-    return { scope: false, templateUrl: '/html/templates/randomizer-settings.html' }
+    return { scope: false, templateUrl: './src/public/html/templates/randomizer-settings.html' }
 });
 
 angular.module('CandyBeatApp').directive('randomsplatter', function() {
-    return { scope: false, templateUrl: '/html/templates/randomizer/splatter.html' }
+    return { scope: false, templateUrl: './src/public/html/templates/randomizer/splatter.html' }
 });
 
 angular.module('CandyBeatApp').directive('randomphrase', function() {
-    return { scope: false, templateUrl: '/html/templates/randomizer/phrase.html' }
+    return { scope: false, templateUrl: './src/public/html/templates/randomizer/phrase.html' }
 });

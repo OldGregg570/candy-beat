@@ -1,4 +1,4 @@
-@import "http://localhost/bootstrap/less/bootstrap.less";
+@import "../../../bower_components/bootstrap/less/bootstrap.less";
 
 /**
  * Misc
@@ -24,9 +24,9 @@ input[type="file"] {	display: none; }
  */
 	.track-settings { .modal-body; padding: 20px; top: -39px;
 		.color-picker { position: absolute; right: 20px; top: 20px; border: 2px #eee solid;}
-		.resolution-spinner { height: 26px; }
+		.resolution-spinner { color: white;	position:relative; top:-12px; height: 26px; }
+		.midich-spinner { width: 76px; height: 20px; text-align: right; }
 		.track-name { margin-right:49px; }
-		input[type=number] { color: white;	position:relative; top:-12px; }
 		.btn-grid { .btn; .btn-default; height: 30px; position: relative; top: 0;	padding: 2px;}
 		.btn-load-grid { .btn; .btn-default; height: 26px; border:none;	padding: 0px;}
 		.save-icon-grid { .glyphicon; .glyphicon-floppy-save; position: relative; top: -4; margin: 10; }
@@ -34,7 +34,8 @@ input[type="file"] {	display: none; }
 		.candy-beat-grid { float: none; }
 		.list-grid { padding: 0; }
 		.popover { min-width:300px; min-height:80px; padding: 4px; }
-
+		.midiout-select { width:140px; display: block; }
+		.midich-select-text { width: 300px; }
 	}
 
 	.randomizer-settings { .modal-body; padding: 20px; top: -45px;

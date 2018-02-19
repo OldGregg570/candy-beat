@@ -29,6 +29,7 @@ angular.module('CandyBeatApp').factory('Track', function (Cell, synthService, ra
     this.columns = [];
     this.index = index;
     this.resolution = res;
+    this.midiOutput = {name: "Internal", internal: true, id: "INTERNAL" };
     this.midiChannel = 0;
     this.synthOut = true;
     this.locked = false;

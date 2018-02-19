@@ -1,4 +1,4 @@
-angular.module('CandyBeatApp').factory('patchService', function ($http, $window, music, randomService, $q) {
+angular.module('CandyBeatApp').factory('patchService', function ($window, music, randomService, $q) {
    var randIntLinear   = randomService.randIntLinear;
    var randInt         = randomService.randInt;
    var randFloatLinear = randomService.randFloatLinear;
@@ -32,78 +32,6 @@ angular.module('CandyBeatApp').factory('patchService', function ($http, $window,
     });
    }
 
-
-   function _getDecodePromise (fname) {
-    var d = $q.defer();
-    var options = { responseType: 'arraybuffer' };
-    $http.get(fname, options).then(function (res) {
-     ctx.decodeAudioData(res.data, d.resolve);
-    });
-    return d.promise;
-   }
-
-
-   function generateSamplerSet (files, cb) {
-    var decodePromises = files.map(_getDecodePromise);
-
-     function newSampler (sample) {
-      return {
-          gain: 80,
-          type: 'sampler',
-          lfo: {
-           level: 0,
-           frequency: 1,
-           destination: 'osc-2.frequency'
-          },
-          filter: {
-           cutoff: 0,
-           type: 'highpass'
-          },
-          envelope: {
-           attack: 0,
-           release: 0,
-           sustain: 2000
-          },
-          oscs: [{
-           type: 'sampler',
-           sample: sample,
-           volume: 100
-          }],
-         };
-     }
-
-    $q.all(decodePromises).then(function (bufferArray) {
-     var synths = [];
-     for (var i = 0; i < bufferArray.length; i++) {
-       synths.push (newSampler ({name: files[i], arrayBuffer: bufferArray[i]}));
-     }
-
-     cb(synths);
-    });
-
-   }
-
-   function _generateKit808 (cb) {
-     generateSamplerSet (['808_bass.wav',
-                          '808_sd.wav',
-                          '808_hhclosed.wav',
-                          '808_hhopen.wav',
-                          '808_ltom.wav',
-                          '808_htom.wav',
-                          '808_rcym.wav',
-                          '808_cbell.wav'], cb);
-   }
-
-   function _generateRandomSampler (cb) {
-    $http.get('/samples/').success(function (samples) {
-     randomSamples = [];
-     for (var i = 0; i < 8; i++) {
-      randomSamples.push(randomService.select(samples));
-     }
-     generateSamplerSet (randomSamples, cb);
-    });
-   }
-
    function _randomOscs (cb) {
     var oscs = [
      {
@@ -131,23 +59,8 @@ angular.module('CandyBeatApp').factory('patchService', function ($http, $window,
     cb(oscs);
    }
 
-   function _randomSample (cb) {
-    _getDecodePromise ('808_bass.wav').then(function (bufferArray) {
-     cb([{
-      type: 'sampler',
-      sample: {name: '808_bass.wav', arrayBuffer: bufferArray},
-      volume: 100
-     }]);
-    });
-
-
-   }
-
   return {
-   generate808: _generateRandomSampler,
    generateRandomSynth: _generateRandomSynth,
-   getDecodePromise: _getDecodePromise,
-   randomSample: _randomSample,
    randomOscs: _randomOscs
   }
 });

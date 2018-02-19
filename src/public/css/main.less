@@ -1,4 +1,4 @@
-@import "http://localhost/bootstrap/less/bootstrap.less";
+@import "../../../bower_components/bootstrap/less/bootstrap.less";
 
 
 /**
@@ -41,9 +41,8 @@ rzslider span.rz-bubble { color: #fff; }
 /**
  * Toolbar
 	*/
-.main-toolbar {	height: 36px;	background-color: @color-panel;	border-bottom: @toolbar-border;	border-top: @toolbar-border;
+.main-toolbar {	padding-left: 40px; height: 36px;	background-color: @color-panel;	border-bottom: @toolbar-border;	border-top: @toolbar-border;
 	button {	background-color: @color-panel;	padding-top: 4px;	height: 100%;	border: none; }
-	.add-track { .btn-group; padding-left: 40px; }
 	.btn-add-track { .btn; .btn-default; border: none; background-color: transparent;}
 	.add-track-menu { font-size: 22px; }
 	.toolbar-select { border: none;	background-color:	inherit; }
@@ -54,7 +53,6 @@ rzslider span.rz-bubble { color: #fff; }
 	rzslider .rz-pointer { top: 0px; width: 12px; height: 12px; }
 	rzslider .rz-pointer:after { top: 2px; left: 2px; }
 	rzslider span.rz-bubble { top: -32px; color: #fff; }
-
 }
 
 /**
