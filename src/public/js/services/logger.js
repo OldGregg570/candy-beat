@@ -1,4 +1,4 @@
-angular.module('CandyBeatApp').factory('logger', function($window, $http) {
+angular.module('CandyBeatApp').factory('logger', function($window) {
 
     var LVL_MAP = { silly: 0, debug: 1, verbose: 2, info: 3, warning: 4, error: 5 };
 

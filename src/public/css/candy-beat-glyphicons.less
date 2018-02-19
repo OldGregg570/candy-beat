@@ -1,4 +1,4 @@
-@import "http://localhost/bootstrap/less/bootstrap.less";
+@import "../../../bower_components/bootstrap/less/bootstrap.less";
 
 
 .icon {
@@ -35,6 +35,17 @@
  transform: scale(0.3, 0.3) translate(0, -20px);
 }
 
+.icon-note {
+ .icon;
+ background-image: url("./img/glyphicons_new.png");
+ height: 32px;
+ width: 32px;
+ left: -52px;
+ top: -5px;
+ position: relative;
+ transform: scale(0.75, 0.75);
+}
+
 .icon-waveform.icon-sine {background-position: -1 -1; }
 .icon-waveform.icon-square {background-position: -92 -1; }
 .icon-waveform.icon-triangle {background-position: -1 -92; }
@@ -50,10 +61,10 @@
 .icon-synth {.icon-large; background-position: 0 -390px }
 .icon-sampler {.glyphicon; .glyphicon-th; }
 
-.icon-whole{ .icon-large; background-position: 0 -422px;  }
-.icon-half{ .icon-large; background-position: 0 -457px;  }
-.icon-quarter{ .icon-large; background-position: 0 -494px;  }
-.icon-eighth{ .icon-large; background-position: 0 -528px;  }
-.icon-sixteenth{ .icon-large; background-position: 0 -566px;  }
-.icon-thirty-second{ .icon-large; background-position: 0 -601px;  }
-.icon-sixty-fourth{ .icon-large; background-position: 0 -636px;  }
+.icon-whole{ .icon-note; background-position: 0 -422px;  }
+.icon-half{ .icon-note; background-position: 2 -454px;  }
+.icon-quarter{ .icon-note; background-position: 2 -489px;  }
+.icon-eighth{ .icon-note; background-position: 2 -526px;  }
+.icon-sixteenth{ .icon-note; background-position: 2 -562px;  }
+.icon-thirty-second{ .icon-note; background-position: 2 -599px;  }
+.icon-sixty-fourth{ .icon-note; background-position: 2 -636px;  }

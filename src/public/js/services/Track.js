@@ -11,7 +11,7 @@ angular.module('CandyBeatApp').factory('Cell', function () {
   return Cell;
 });
 
-angular.module('CandyBeatApp').factory('Track', function (Cell, synthService){
+angular.module('CandyBeatApp').factory('Track', function (Cell, synthService, randomService) {
   function Track(rows, cols, index, res, type, cb) {
    function fillArray(value, len) {
      var arr = [];
@@ -21,19 +21,29 @@ angular.module('CandyBeatApp').factory('Track', function (Cell, synthService){
      return arr;
     }
 
+    function randColorPart () {
+     var c = randomService.randInt(0, 240).toString(16);
+     return (c.length === 1 ? '0' : '') + c;
+    }
+
     this.columns = [];
     this.index = index;
     this.resolution = res;
+    this.midiOutput = {name: "Internal", internal: true, id: "INTERNAL" };
+    this.midiChannel = 0;
+    this.synthOut = true;
     this.locked = false;
     this.mute = false;
     this.solo = false;
     this.gain = 80;
+    this.color = '#' + randColorPart() + randColorPart() + randColorPart();
     this.randomizer = {
      strategy: 'splatter',
      toggleChance: 0.1,
      clear: false,
      repeat: 2,
-     rhythmFilter: fillArray(true, 64)
+     rhythmFilter: fillArray(true, 64),
+     maxInterval: 2
     };
     var that = this;
 

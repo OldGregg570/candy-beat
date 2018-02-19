@@ -1,29 +1,88 @@
 <uib-tabset style="top: -100px;">
+
+ <!--  Track Settings -->
  <uib-tab>
-  <uib-tab-heading>
+  <uib-tab-heading>Track Settings</uib-tab-heading>
+
+ <div class="track-settings">
+
+  <color-picker ng-model="track.color"
+                class="color-picker"
+                color-picker-format="'hex'"
+                color-picker-alpha="false"
+                color-picker-swatch-only="true"
+                color-picker-pos="'bottom right'">
+
+  </color-picker>
+
+
+  <h3 class="track-name pull-left"> Track {{ track.index + 1 }}</h3>
+  <table class="table">
+   <tr><td class="col-one">Resolution</td>
+       <td class="col-two"><input type="number"
+              class="resolution-spinner"
+              name="input"
+              ng-model="track.resolution"
+              min="0"
+              max="6"
+              required>
+
+            <span ng-class="getResolutionIcon()"></span>
+       </td>
+       <td>There will be {{ 64 / powerOfTwo(track.resolution) }} column{{ track.resolution === 6 ? '' : 's' }} in this track's grid. </td>
+   </tr>
+      <tr><td>Output</td>
+          <td>
+              <select class="midiout-select" ng-model="track.midiOutput" ng-change="selectMidiOut()"
+                      ng-options="out.name for out in midiOutputs track by out.id">
+                      {{ out.name }}
+              </select>
+              <span ng-if="!track.midiOutput">
+              Channel
+              <input type="number"
+                     class="midich-spinner"
+                     name="input"
+                     ng-model="track.midiChannel"
+                     min="0"
+                     max="15">
+              </span>
+          </td>
+          <td class="midich-select-text">
+              <span ng-if="!track.midiOutput.internal">
+                Notes from this track will be output to {{ ggg.selectedMidiOutput }} on MIDI channel {{ track.midiChannel }}.
+              </span>
+              <span ng-if="track.midiOutput.internal">
+                Notes from this track will be output using this track's synthesizer.
+              </span>
+          </td>
+      </tr>
+  </table>
+
+
+
+ </div>
+
+ <span style="clear:both;"></span>
+
+ <div class="modal-footer">
+   <button class="btn btn-default" ng-click="cancel()">OK</button>
+ </div>
+</uib-tab>
+
+<!--  Synth Settings -->
+<uib-tab>
+ <uib-tab-heading>
   {{ track.synthesizers[0].type === 'sampler' ? 'Sampler' : 'Synthesizer' }} Settings
  </uib-tab-heading>
-  <settingssynth></settingssynth>
- </uib-tab>
 
+ <settingssynth></settingssynth>
+</uib-tab>
 
- <uib-tab>
-  <uib-tab-heading>
-  Track Settings
- </uib-tab-heading>
- <div class="track-settings">
-   <h3> Track {{ track.index + 1 }} </h3>
-   <h4> Resolution: {{ track.resolution }} </h4>
-   <input type="number" class="resolution-spinner" name="input" ng-model="track.resolution" min="0" max="6" required>
-  </div>
+<!-- Randomizer Settings -->
+<uib-tab>
+ <uib-tab-heading>Randomizer Settings</uib-tab-heading>
 
-  </uib-tab>
-
-  <uib-tab>
-   <uib-tab-heading>
-   Randomizer Settings
-  </uib-tab-heading>
-   <randomizersettings></randomizersettings>
- </uib-tab>
+ <randomizersettings></randomizersettings>
+</uib-tab>
 
 </uib-tabset>

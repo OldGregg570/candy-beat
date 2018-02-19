@@ -3,7 +3,7 @@ angular.module('CandyBeatApp').directive('userlog', function(){
         restrict: 'E',
         scope: {},
         controller: 'userLogCtrl',
-        templateUrl: '/html/templates/user-logs.html'
+        templateUrl: './html/templates/user-logs.html'
     }
 });
 

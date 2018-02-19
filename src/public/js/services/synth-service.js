@@ -1,5 +1,5 @@
 
-angular.module('CandyBeatApp').factory('synthService', function ($http, $window, music, randomService, $q, patchService) {
+angular.module('CandyBeatApp').factory('synthService', function ($window, music, $q, patchService) {
  var ctx = new AudioContext();
  var analyserJsNode = ctx.createScriptProcessor(1024, 1, 1);
  var NOISE_SIZE = 4096;
@@ -25,7 +25,7 @@ angular.module('CandyBeatApp').factory('synthService', function ($http, $window,
    var lfo = ctx.createOscillator();
    var lfoGain = ctx.createGain ();
 
-   lfo.frequency.value = synthesizer.lfo.frequency
+   lfo.frequency.value = synthesizer.lfo.frequency;
    lfoGain.gain.value = synthesizer.lfo.level;
    lfo.connect(lfoGain);
 
